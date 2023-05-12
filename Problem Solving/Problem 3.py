@@ -24,4 +24,5 @@ print(c)
 print("the area of the right triangle is",a*b/2)
 ### new if you have radius then find the area of circle, find for radius 2,5,10,
 rad=int(3.5)
-print("the radius is",rad*3.1415829**2)
+print("the radius is",(rad**2) * 3.1415829)
+### i sent you gui coode ,... which has perimeter your task is to replace permitor to find hypothenus

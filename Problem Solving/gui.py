@@ -16,6 +16,9 @@ def calculate_Hypotess():
 root = tk.Tk()
 root.title("triangle cacular")
 
+
+
+
 # Create the length label and entry widget
 length_label = tk.Label(root, text="Length:")
 length_label.grid(row=0, column=0)
