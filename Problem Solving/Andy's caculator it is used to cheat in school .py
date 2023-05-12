@@ -1,3 +1,5 @@
+ 
+
 import tkinter as tk
 # Create the main window
 root = tk.Tk()
@@ -207,31 +209,26 @@ def andykmydconcalcu():
 sqrt_button = tk.Button(root, text="Mr. Andy calculator km to yards!!!", command=andykmydconcalcu)
 sqrt_button.grid(row=12, column=0)
 
-mys_num13 = tk.Label(root, text="factorial :")
-mys_num13.grid(row=8, column=2)
 
-mys_ent13 = tk.Entry(root)
-mys_ent13.grid(row=8, column=3)
 
 def factorial():
     x=1
-    for each in range(1,mys_ent13+1):
+    for each in range(1,int(mys_ent14.get())+1):
         print(each,"*",x ,"= ",end="")
         x*=each
         print(x)
-
+    mys_result.config(text= f"{x} is factorial ans")
         
-numy=int(input("num\n"))
-factorial(numy)
+
 
 fac_button = tk.Button(root, text="Mr. Andy calculator factorial!!!", command=factorial)
-fac_button.grid(row=13, column=1)
+fac_button.grid(row=13, column=0)
 
 mys_num14 = tk.Label(root, text="factorial :")
-mys_num14.grid(row=14, column=2)
+mys_num14.grid(row=8, column=2)
 
 mys_ent14 = tk.Entry(root)
-mys_ent14.grid(row=14, column=3)
+mys_ent14.grid(row=8, column=3)
 
 
 root.mainloop()
