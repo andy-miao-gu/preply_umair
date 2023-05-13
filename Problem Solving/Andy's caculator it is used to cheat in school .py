@@ -5,11 +5,11 @@ import tkinter as tk
 root = tk.Tk()
 root.title("Andys calculator")
 
-"""
+
 p1 =  tk.PhotoImage(file = 'download2.png')
 photo = tk.Label(root,image =p1)
 photo.grid(row = 7, column =1,rowspan=  11)
-"""
+
 
 # Create the length label and entry widget
 mys_num = tk.Label(root, text="Mystiorious number:")
@@ -217,7 +217,7 @@ def factorial():
         print(each,"*",x ,"= ",end="")
         x*=each
         print(x)
-    mys_result.config(text= f"{x} is factorial ans")
+    mys_result.config(text= f"the factorial of {mys_ent14.get()} is {x}")
         
 
 
@@ -229,6 +229,7 @@ mys_num14.grid(row=8, column=2)
 
 mys_ent14 = tk.Entry(root)
 mys_ent14.grid(row=8, column=3)
-
-
+x=1
+while x!=1:
+    break
 root.mainloop()
