@@ -229,7 +229,7 @@ mys_num14.grid(row=8, column=2)
 
 mys_ent14 = tk.Entry(root)
 mys_ent14.grid(row=8, column=3)
-x=1
-while x!=1:
-    break
+
+
+
 root.mainloop()

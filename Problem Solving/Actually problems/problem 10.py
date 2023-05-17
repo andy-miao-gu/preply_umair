@@ -15,3 +15,4 @@ print("maximum =",maxi)
 print("sum all =",sumi)
 print("minimum =",mini)
 print("average =",avei)
+
