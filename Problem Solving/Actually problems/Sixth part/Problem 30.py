@@ -59,3 +59,4 @@ for each in data:
     for i in data[each]:
         for ie in data[each][i]:
             print("years is",each,","+"day is",i,","+"and tempature is" , data[each][i][ie])
+print("my account is Preply.students.Andy@gmail.com and password is Andyisnotstupidnordumb")
