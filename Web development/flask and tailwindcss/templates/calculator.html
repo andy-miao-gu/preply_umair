@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel = "stylesheet" href="./static/dist/output.css" >
+</head>
+
+<body class="bg-gray-200 flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-lg shadow">
+        <div class="grid grid-cols-4 gap-4">
+            <div class="col-span-4 text-right text-2xl font-bold" id="display">0</div>
+            <button class="col-span-3 bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="clearDisplay()">AC</button>
+            <button class="bg-yellow-400 rounded-lg p-4 text-2xl font-bold" onclick="calculate()">=</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('/')">/</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('7')">7</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('8')">8</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('9')">9</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('*')">*</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('4')">4</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('5')">5</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('6')">6</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('-')">-</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('1')">1</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('2')">2</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('3')">3</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('+')">+</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold col-span-2" onclick="appendSymbol('0')">0</button>
+            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+
+        function appendSymbol(symbol) {
+            if (display.innerText === '0') {
+                display.innerText = symbol;
+            } else {
+                display.innerText += symbol;
+            }
+        }
+
+        function calculate() {
+            try {
+                display.innerText = eval(display.innerText);
+            } catch (error) {
+                display.innerText = 'Error';
+            }
+        }
+
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+    </script>
+</body>
+
+</html>
