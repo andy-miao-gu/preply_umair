@@ -1,79 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel = "stylesheet" href="./static/dist/output.css" >
+    <title>Tailwind CSS Calculator</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 </head>
+<body class="bg-gray-100">
+    <div class="container mx-auto my-8">
+        <!-- Calculator display -->
+        <div id="display" class="bg-white p-4 text-2xl font-bold text-right">
+            0
+        </div>
+        <!-- Calculator buttons -->
+        <div class="grid grid-cols-4 gap-4 mt-4">
+            <!-- Buttons for digits -->
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('1')">1</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('2')">2</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('3')">3</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('4')">4</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('5')">5</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('6')">6</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('7')">7</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('8')">8</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('9')">9</button>
+            <button class="col-span-1 bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" onclick="addToDisplay('0')">0</button>
 
-<body class="bg-gray-200 flex items-center justify-center h-screen">
+            <!-- Buttons for operators (+, -, *, /) -->
+            <button class="col-span-1 bg-yellow-500 text-white font-bold py-2 px-4 rounded" onclick="addToDisplay('+')">+</button>
+            <button class="col-span-1 bg-yellow-500 text-white font-bold py-2 px-4 rounded" onclick="addToDisplay('-')">-</button>
+            <button class="col-span-1 bg-yellow-500 text-white font-bold py-2 px-4 rounded" onclick="addToDisplay('*')">*</button>
+            <button class="col-span-1 bg-yellow-500 text-white font-bold py-2 px-4 rounded" onclick="addToDisplay('/')">/</button>
 
-    <div class="bg-white p-8 rounded-lg shadow grow-0">
-        <div class="grid grid-cols-4 gap-4 grow-0">
-            <div class="col-span-4 text-right text-2xl font-bold" id="display">0</div>
-            <button class="col-span-3 bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="clearDisplay()">AC</button>
-            <button class="bg-yellow-400 rounded-lg p-4 text-2xl font-bold" onclick="calculate()">=</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('/')">/</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('7')">7</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('8')">8</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('9')">9</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('*')">*</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('4')">4</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('5')">5</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('6')">6</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('-')">-</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('1')">1</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('2')">2</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('3')">3</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('+')">+</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold col-span-2" onclick="appendSymbol('0')">0</button>
-            <button class="bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="appendSymbol('.')">.</button>
+            <!-- Equal sign (=) button -->
+            <button class="col-span-2 bg-blue-500 text-white font-bold py-2 px-4 rounded" onclick="calculateResult()">=</button>
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        let display = document.getElementById('display');
+        let displayValue = "0";
 
-        function appendSymbol(symbol) {
-            if (display.innerText === '0') {
-                display.innerText = symbol;
+        function addToDisplay(value) {
+            if (displayValue === "0") {
+                displayValue = value;
             } else {
-                display.innerText += symbol;
+                displayValue += value;
             }
+            updateDisplay();
         }
 
-        function calculate() {
-           //// try {
-             //   display.innerText = eval(display.innerText);
-           // } catch (error) {
-          //      display.innerText = 'Error';
-            //}
-            // Make an AJAX POST request to the Flask server
+        function updateDisplay() {
+            const display = document.getElementById('display');
+            display.textContent = displayValue;
+        }
 
-        var calcu = display.innerText;
-
-        $.ajax({
-                type: "POST",
-                url: "/pros_cal_data",  // Replace this with the endpoint you want to send the data to in Flask
-                data: { data: calcu },
-                success: function(response) {
-                    console.log("Data sent successfully!");
+        function calculateResult() {
+            fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
                 },
-                error: function(error) {
-                    console.error("Error sending data:", error);
+                body: JSON.stringify({ expression: displayValue })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    displayValue = "0";
+                } else {
+                    displayValue = data.result;
                 }
+                updateDisplay();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                displayValue = "0";
+                updateDisplay();
             });
-
-
-
-        }
-
-        function clearDisplay() {
-            display.innerText = '0';
         }
     </script>
 </body>
-
 </html>

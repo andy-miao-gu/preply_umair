@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,jsonify
 
 app = Flask(__name__)
 
@@ -18,10 +18,19 @@ def hello_world4():
     return render_template("calculator.html")
 
 # a function for GET POST requests
-@app.route("/pros_cal_data", methods=['POST'])
-def hello_world5():
-    data = request.form.get("data")
-    print(data)
+
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.get_json()
+    expression = data['expression']
+
+    try:
+        # Evaluate the expression to get the result
+        result = eval(expression)
+        return jsonify({'result': result})
+    except Exception as e:
+        return jsonify({'error': str(e)})
+    
 
 if __name__ == "__main__":
     app.run(debug = True)
