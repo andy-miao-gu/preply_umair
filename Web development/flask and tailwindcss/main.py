@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,request
 
 app = Flask(__name__)
 
@@ -16,6 +16,12 @@ def hello_world3():
 @app.route("/calculator")
 def hello_world4():
     return render_template("calculator.html")
+
+# a function for GET POST requests
+@app.route("/pros_cal_data", methods=['POST'])
+def hello_world5():
+    data = request.form.get("data")
+    print(data)
 
 if __name__ == "__main__":
     app.run(debug = True)

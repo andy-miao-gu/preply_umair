@@ -9,8 +9,9 @@
 </head>
 
 <body class="bg-gray-200 flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded-lg shadow">
-        <div class="grid grid-cols-4 gap-4">
+
+    <div class="bg-white p-8 rounded-lg shadow grow-0">
+        <div class="grid grid-cols-4 gap-4 grow-0">
             <div class="col-span-4 text-right text-2xl font-bold" id="display">0</div>
             <button class="col-span-3 bg-gray-300 rounded-lg p-4 text-2xl font-bold" onclick="clearDisplay()">AC</button>
             <button class="bg-yellow-400 rounded-lg p-4 text-2xl font-bold" onclick="calculate()">=</button>
@@ -44,11 +45,29 @@
         }
 
         function calculate() {
-            try {
-                display.innerText = eval(display.innerText);
-            } catch (error) {
-                display.innerText = 'Error';
-            }
+           //// try {
+             //   display.innerText = eval(display.innerText);
+           // } catch (error) {
+          //      display.innerText = 'Error';
+            //}
+            // Make an AJAX POST request to the Flask server
+
+        var calcu = display.innerText;
+
+        $.ajax({
+                type: "POST",
+                url: "/pros_cal_data",  // Replace this with the endpoint you want to send the data to in Flask
+                data: { data: calcu },
+                success: function(response) {
+                    console.log("Data sent successfully!");
+                },
+                error: function(error) {
+                    console.error("Error sending data:", error);
+                }
+            });
+
+
+
         }
 
         function clearDisplay() {
