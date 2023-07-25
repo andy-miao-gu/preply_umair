@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Data Storage</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md p-6 bg-white rounded shadow-md">
+        <h1 class="text-3xl font-bold mb-6 text-center">Flask Data Storage</h1>
+        <form method="POST" class="mb-6">
+            <div class="mb-4">
+                <label for="name" class="block font-bold mb-2">Name:</label>
+                <input type="text" id="name" name="name" required
+                    class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="id" class="block font-bold mb-2">ID:</label>
+                <input type="text" id="id" name="id" required
+                    class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="age" class="block font-bold mb-2">Age:</label>
+                <input type="number" id="age" name="age" required
+                    class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white font-bold px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
+        </form>
+
+        <h2 class="text-xl font-bold mb-2">Data Table:</h2>
+        <table class="w-full border border-gray-300 rounded-md">
+            <thead>
+                <tr class="bg-blue-500 text-white">
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">ID</th>
+                    <th class="px-4 py-2">Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in data_list %}
+                <tr>
+                    <td class="border px-4 py-2">{{ data['name'] }}</td>
+                    <td class="border px-4 py-2">{{ data['id'] }}</td>
+                    <td class="border px-4 py-2">{{ data['age'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
