@@ -6,7 +6,7 @@ root = tk.Tk()
 root.title("Andys calculator")
 
 
-p1 =  tk.PhotoImage(file = 'Just some random stuff/Part One/download2.png')
+p1 =  tk.PhotoImage(file = '/Users/andymiaogu/Desktop/preply_umair/Problem Solving/Just some random stuff/Part One/download2.png')
 photo = tk.Label(root,image =p1)
 photo.grid(row = 7, column =1,rowspan=  11)
 

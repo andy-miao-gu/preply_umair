@@ -3,7 +3,7 @@ keys=""
 import os
 
 import openai
-openai.api_key = "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"
+openai.api_key = "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"
 
  
 
